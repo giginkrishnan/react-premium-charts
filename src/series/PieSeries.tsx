@@ -21,7 +21,7 @@ export function PieSeries<T extends Datum>({
   outerRadius,
   padAngle = 0,
   cornerRadius = 0,
-  animate = false,
+  animate = true,
   duration = 600,
   hoverDimOpacity = 0.4,
   tooltip

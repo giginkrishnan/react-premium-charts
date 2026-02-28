@@ -19,7 +19,7 @@ export function BarSeries<T extends Datum>({
   yScale,
   fill = "var(--msc-s1)",
   radius = 10,
-  animate = false,
+  animate = true,
   duration = 500,
   hoverDimOpacity = 0.4,
   tooltip

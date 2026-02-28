@@ -13,7 +13,7 @@ export function AreaSeries<T extends Datum>({
   fill = "var(--msc-s1)",
   fillOpacity = 0.18,
   curve = "monotone",
-  animate = false,
+  animate = true,
   duration = 600
 }: {
   data: T[];

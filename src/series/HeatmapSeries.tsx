@@ -12,7 +12,7 @@ export function HeatmapSeries({
   columns,
   data,
   colorScale = ["#dcfce7", "#86efac", "#22c55e", "#15803d"],
-  animate = false,
+  animate = true,
   duration = 300,
   hoverDimOpacity = 0.7,
   tooltip

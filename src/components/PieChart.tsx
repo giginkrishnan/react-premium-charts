@@ -27,6 +27,7 @@ export function PieChart<T extends Datum>({
   innerRadius = 0,
   padAngle = 0.02,
   cornerRadius = 4,
+  animate = true,
   tooltip
 }: {
   data: T[];
@@ -42,6 +43,7 @@ export function PieChart<T extends Datum>({
   innerRadius?: number;
   padAngle?: number;
   cornerRadius?: number;
+  animate?: boolean;
   tooltip?: (d: T, i: number) => TooltipContent;
 }) {
   const getColor = (i: number): string =>
@@ -77,6 +79,7 @@ export function PieChart<T extends Datum>({
           innerRadius={innerRadius}
           padAngle={padAngle}
           cornerRadius={cornerRadius}
+          animate={animate}
           tooltip={defaultTooltip}
         />
       </Chart>

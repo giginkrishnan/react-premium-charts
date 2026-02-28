@@ -20,7 +20,7 @@ export function GroupedBarSeries<T extends Datum>({
   yScale,
   groups,
   radius = 6,
-  animate = false,
+  animate = true,
   duration = 500,
   hoverDimOpacity = 0.4
 }: {

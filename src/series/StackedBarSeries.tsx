@@ -16,7 +16,7 @@ export function StackedBarSeries({
   segments,
   orientation = "horizontal",
   radius = 4,
-  animate = false,
+  animate = true,
   duration = 400,
   hoverDimOpacity = 0.4,
   showValues = true,

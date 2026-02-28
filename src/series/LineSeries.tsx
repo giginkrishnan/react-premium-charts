@@ -19,7 +19,7 @@ export function LineSeries<T extends Datum>({
   strokeWidth = 2.5,
   curve = "monotone",
   showMarkers = false,
-  animate = false,
+  animate = true,
   duration = 800,
   hoverDimOpacity = 0.5,
   tooltip
@@ -120,7 +120,15 @@ export function LineSeries<T extends Datum>({
                 fill={showMarkers ? stroke : "var(--msc-panel)"}
                 stroke={showMarkers ? "var(--msc-panel)" : stroke}
                 strokeWidth={showMarkers ? 2 : 2.5}
-                style={{ transition: "opacity 0.15s ease" }}
+                style={{
+                  transition: "opacity 0.15s ease",
+                  transformOrigin: "center",
+                  ...(animate
+                    ? {
+                        animation: `msc-marker-pop 400ms ease-out ${Math.min(300 + i * 80, duration - 100)}ms both`
+                      }
+                    : {})
+                }}
               />
               {tooltip && hoveredIndex === i && (
                 <TooltipPortal

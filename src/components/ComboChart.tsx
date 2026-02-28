@@ -21,6 +21,7 @@ export function ComboChart<T extends Datum>({
   height = 200,
   margin = { top: 24, right: 16, bottom: 28, left: 46 },
   showMarkers = true,
+  animate = true,
   barTooltip,
   lineTooltip
 }: {
@@ -36,6 +37,7 @@ export function ComboChart<T extends Datum>({
   height?: number;
   margin?: { top?: number; right?: number; bottom?: number; left?: number };
   showMarkers?: boolean;
+  animate?: boolean;
   barTooltip?: (d: T, i: number) => TooltipContent;
   lineTooltip?: (d: T, i: number) => TooltipContent;
 }) {
@@ -109,6 +111,7 @@ export function ComboChart<T extends Datum>({
         xScale={xScale}
         yScale={yScale}
         fill={barFill}
+        animate={animate}
         tooltip={defaultBarTooltip}
       />
       <LineSeries
@@ -119,6 +122,7 @@ export function ComboChart<T extends Datum>({
         yScale={yScale}
         stroke={lineStroke}
         showMarkers={showMarkers}
+        animate={animate}
         tooltip={defaultLineTooltip}
       />
     </Chart>
