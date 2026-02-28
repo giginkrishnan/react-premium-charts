@@ -23,7 +23,7 @@ import {
   LinearGradient,
   RadialGradient,
   MultiaxisLineChart
-} from "react-modern-charts";
+} from "react-premium-charts";
 
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 

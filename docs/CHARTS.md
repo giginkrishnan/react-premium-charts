@@ -1,6 +1,6 @@
 # Chart Gallery & Documentation
 
-A comprehensive guide to all chart types available in **react-modern-charts**.
+A comprehensive guide to all chart types available in **react-premium-charts**.
 
 ![Chart Gallery](https://raw.githubusercontent.com/giginkrishnan/react-modern-charts/main/assets/chart-gallery.png)
 
@@ -8,17 +8,17 @@ A comprehensive guide to all chart types available in **react-modern-charts**.
 
 ## Overview
 
-react-modern-charts is an SVG-first React charting library built with **d3-scale** and **d3-shape** for layout and path generation. All charts support theming (light/dark), color palettes, tooltips, gradients, and responsive sizing.
+react-premium-charts is an SVG-first React charting library built with **d3-scale** and **d3-shape** for layout and path generation. All charts support theming (light/dark), color palettes, tooltips, gradients, and responsive sizing.
 
 ### Quick Start
 
 ```bash
-npm i d3-array d3-scale d3-shape react-modern-charts
+npm i d3-array d3-scale d3-shape react-premium-charts
 ```
 
 ```tsx
-import "react-modern-charts/styles.css";
-import { ThemeProvider, Chart, LineSeries } from "react-modern-charts";
+import "react-premium-charts/styles.css";
+import { ThemeProvider, Chart, LineSeries } from "react-premium-charts";
 
 function App() {
   return (

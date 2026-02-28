@@ -1,4 +1,4 @@
-# react-modern-charts
+# react-premium-charts
 
 A small, modern **SVG-first** React chart library using **d3-scale** and **d3-shape** for layout and path generation. Lightweight, themeable, and built for React 18+.
 
@@ -8,21 +8,21 @@ A small, modern **SVG-first** React chart library using **d3-scale** and **d3-sh
 
 ```bash
 npm i d3-array d3-scale d3-shape
-npm i react-modern-charts
+npm i react-premium-charts
 ```
 
 Import CSS once:
 
 ```ts
-import "react-modern-charts/styles.css";
+import "react-premium-charts/styles.css";
 ```
 
 ## Quick Start
 
 ```tsx
 import { scaleLinear } from "d3-scale";
-import { ThemeProvider, Chart, LineSeries } from "react-modern-charts";
-import "react-modern-charts/styles.css";
+import { ThemeProvider, Chart, LineSeries } from "react-premium-charts";
+import "react-premium-charts/styles.css";
 
 function App() {
   const data = [{ value: 10 }, { value: 25 }, { value: 15 }, { value: 40 }];
