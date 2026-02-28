@@ -2,7 +2,7 @@
 
 A small, modern **SVG-first** React chart library using **d3-scale** and **d3-shape** for layout and path generation. Lightweight, themeable, and built for React 18+.
 
-![Chart Gallery](assets/chart-gallery.png)
+![Chart Gallery](https://raw.githubusercontent.com/giginkrishnan/react-modern-charts/main/assets/chart-gallery.png)
 
 ## Install
 
@@ -50,7 +50,7 @@ function App() {
 | Stacked Bar | `StackedBarSeries` | Horizontal or vertical stacked segments |
 | Heatmap | `HeatmapSeries` | Grid with color intensity |
 
-**[Full chart documentation →](docs/CHARTS.md)** — Props, examples, and usage for each chart type.
+**[Full chart documentation →](https://github.com/giginkrishnan/react-modern-charts/blob/main/docs/CHARTS.md)** — Props, examples, and usage for each chart type.
 
 ## Build
 

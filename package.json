@@ -3,6 +3,14 @@
   "version": "0.1.1",
   "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giginkrishnan/react-modern-charts.git"
+  },
+  "homepage": "https://github.com/giginkrishnan/react-modern-charts#readme",
+  "bugs": {
+    "url": "https://github.com/giginkrishnan/react-modern-charts/issues"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

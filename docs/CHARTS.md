@@ -2,7 +2,7 @@
 
 A comprehensive guide to all chart types available in **react-modern-charts**.
 
-![Chart Gallery](../assets/chart-gallery.png)
+![Chart Gallery](https://raw.githubusercontent.com/giginkrishnan/react-modern-charts/main/assets/chart-gallery.png)
 
 ---
 
