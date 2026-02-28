@@ -186,7 +186,7 @@ export default function App() {
   return (
     <ThemeProvider mode="light">
       <div className="wrap">
-        <h1 style={{ marginBottom: 24, fontSize: 18 }}>Chart Gallery</h1>
+        <h1 style={{ marginBottom: 24, fontSize: 18, gridColumn: "1 / -1" }}>Chart Gallery</h1>
         <div className="card">
           <h2>Line + Area (multi-dataset)</h2>
           <LineAreaChart />
