@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  background: var(--msc-bg);
+  background: #f1f5f9;
   color: var(--msc-text);
   font-family: var(--msc-font);
 }
@@ -13,19 +13,25 @@ body {
   padding: 0 16px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .card {
-  padding: 14px 14px 10px 14px;
-  border: 1px solid var(--msc-border);
-  border-radius: var(--msc-radius);
-  background: var(--msc-panel);
+  padding: 18px 18px 14px 18px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
 }
 
 h2 {
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
   font-size: 14px;
   color: var(--msc-muted);
-  font-weight: 650;
+  font-weight: 600;
 }

@@ -61,3 +61,33 @@ export function AxisLeft({
     </g>
   );
 }
+
+export function AxisRight({
+  ticks,
+  x
+}: {
+  ticks: Tick[];
+  x: number;
+}) {
+  const maxY = Math.max(...ticks.map(t => t.y), 0);
+
+  return (
+    <g>
+      <line x1={x} x2={x} y1={0} y2={maxY} stroke="var(--msc-border)" />
+      {ticks.map((t) => (
+        <g key={t.value} transform={`translate(${x},${t.y})`}>
+          <line x2={6} stroke="var(--msc-border)" />
+          <text
+            x={10}
+            dy="0.32em"
+            textAnchor="start"
+            fontSize={12}
+            fill="var(--msc-muted)"
+          >
+            {t.value}
+          </text>
+        </g>
+      ))}
+    </g>
+  );
+}

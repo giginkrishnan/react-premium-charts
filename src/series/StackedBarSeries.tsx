@@ -64,6 +64,30 @@ export function StackedBarSeries({
   const isHorizontal = orientation === "horizontal";
   const barLength = isHorizontal ? innerWidth : innerHeight;
   const barThickness = isHorizontal ? innerHeight : innerWidth;
+  const n = segments.length;
+
+  function roundedRectPath(
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    r: number,
+    roundLeft: boolean,
+    roundRight: boolean
+  ): string {
+    const r2 = Math.min(r, w / 2, h / 2);
+    if (r2 <= 0) return `M ${x} ${y} L ${x + w} ${y} L ${x + w} ${y + h} L ${x} ${y + h} Z`;
+    if (roundLeft && roundRight) {
+      return `M ${x + r2} ${y} L ${x + w - r2} ${y} A ${r2} ${r2} 0 0 1 ${x + w} ${y + r2} L ${x + w} ${y + h - r2} A ${r2} ${r2} 0 0 1 ${x + w - r2} ${y + h} L ${x + r2} ${y + h} A ${r2} ${r2} 0 0 1 ${x} ${y + h - r2} L ${x} ${y + r2} A ${r2} ${r2} 0 0 1 ${x + r2} ${y} Z`;
+    }
+    if (roundLeft) {
+      return `M ${x + r2} ${y} L ${x + w} ${y} L ${x + w} ${y + h} L ${x + r2} ${y + h} A ${r2} ${r2} 0 0 1 ${x} ${y + h - r2} L ${x} ${y + r2} A ${r2} ${r2} 0 0 1 ${x + r2} ${y} Z`;
+    }
+    if (roundRight) {
+      return `M ${x} ${y} L ${x + w - r2} ${y} A ${r2} ${r2} 0 0 1 ${x + w} ${y + r2} L ${x + w} ${y + h - r2} A ${r2} ${r2} 0 0 1 ${x + w - r2} ${y + h} L ${x} ${y + h} Z`;
+    }
+    return `M ${x} ${y} L ${x + w} ${y} L ${x + w} ${y + h} L ${x} ${y + h} Z`;
+  }
 
   let offset = 0;
 
@@ -80,15 +104,16 @@ export function StackedBarSeries({
         const textY = barThickness / 2;
         const minWidthForLabel = 24;
 
+        const isFirst = idx === 0;
+        const isLast = idx === n - 1;
+        const roundLeft = isFirst;
+        const roundRight = isLast;
+        const pathD = roundedRectPath(x, 0, Math.max(0, width), barThickness, radius, roundLeft, roundRight);
+
         return (
           <g key={idx}>
-            <rect
-              x={x}
-              y={0}
-              width={Math.max(0, width)}
-              height={barThickness}
-              rx={radius}
-              ry={radius}
+            <path
+              d={pathD}
               fill={seg.fill}
               opacity={opacity}
               style={{

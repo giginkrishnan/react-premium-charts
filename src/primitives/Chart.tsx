@@ -27,6 +27,7 @@ export function Chart({
   width,
   height,
   margin = { top: 16, right: 16, bottom: 28, left: 40 },
+  defs,
   children,
   className,
   style
@@ -34,6 +35,7 @@ export function Chart({
   width: number;
   height: number;
   margin?: ChartMargin;
+  defs?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -99,7 +101,7 @@ export function Chart({
           setPointer({ x: local.x, y: local.y });
         }}
       >
-        <g transform={`translate(${margin.left},${margin.top})`}>{children}</g>
+        <g transform={`translate(${margin.left},${margin.top})`}>{defs}{children}</g>
       </svg>
     </ChartCtx.Provider>
   );

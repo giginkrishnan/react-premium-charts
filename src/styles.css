@@ -13,11 +13,65 @@
   --msc-radius: 14px;
   --msc-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
-  --msc-s1: #2563eb;
-  --msc-s2: #10b981;
-  --msc-s3: #f59e0b;
-  --msc-s4: #ef4444;
-  --msc-s5: #8b5cf6;
+  --msc-s1: #118133;
+  --msc-s2: #343738;
+  --msc-s3: #78ae81;
+  --msc-s4: #64b66f;
+  --msc-s5: #5e656e;
+}
+
+/* Default palette (forest green) */
+[data-msc-palette="default"] {
+  --msc-s1: #118133;
+  --msc-s2: #343738;
+  --msc-s3: #78ae81;
+  --msc-s4: #64b66f;
+  --msc-s5: #5e656e;
+}
+
+/* Predefined palette: Sage - muted earthy greens */
+[data-msc-palette="sage"] {
+  --msc-s1: #a4b494;
+  --msc-s2: #bec5ad;
+  --msc-s3: #3b5249;
+  --msc-s4: #519872;
+  --msc-s5: #34252f;
+}
+
+/* Predefined palette: Periwinkle - honeydew, mint, charcoal, grape */
+[data-msc-palette="periwinkle"] {
+  --msc-s1: #edffec;
+  --msc-s2: #61e786;
+  --msc-s3: #5a5766;
+  --msc-s4: #48435c;
+  --msc-s5: #9792e3;
+}
+
+/* Predefined palette: Indigo - jet black, ghost white, periwinkle, twilight/space indigo */
+[data-msc-palette="indigo"] {
+  --msc-s1: #30343f;
+  --msc-s2: #fafaff;
+  --msc-s3: #e4d9ff;
+  --msc-s4: #273469;
+  --msc-s5: #1e2749;
+}
+
+/* Predefined palette: Ocean - pearl aqua, pacific cyan, deep space, dark teal, mint */
+[data-msc-palette="ocean"] {
+  --msc-s1: #75dddd;
+  --msc-s2: #508991;
+  --msc-s3: #172a3a;
+  --msc-s4: #004346;
+  --msc-s5: #09bc8a;
+}
+
+/* Predefined palette: Forest - greens and grays */
+[data-msc-palette="forest"] {
+  --msc-s1: #118133;
+  --msc-s2: #343738;
+  --msc-s3: #78ae81;
+  --msc-s4: #64b66f;
+  --msc-s5: #5e656e;
 }
 
 [data-msc-theme="dark"] {
@@ -117,6 +171,21 @@
 
 .msc-bar-animate {
   transform-origin: bottom;
+}
+
+@keyframes msc-bar-grow-horizontal {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 0.92;
+  }
+}
+
+.msc-bar-horizontal {
+  transform-origin: left;
 }
 
 @keyframes msc-pie-draw {

@@ -22,6 +22,7 @@ export function ComboChart<T extends Datum>({
   margin = { top: 24, right: 16, bottom: 28, left: 46 },
   showMarkers = true,
   animate = true,
+  defs,
   barTooltip,
   lineTooltip
 }: {
@@ -38,6 +39,7 @@ export function ComboChart<T extends Datum>({
   margin?: { top?: number; right?: number; bottom?: number; left?: number };
   showMarkers?: boolean;
   animate?: boolean;
+  defs?: React.ReactNode;
   barTooltip?: (d: T, i: number) => TooltipContent;
   lineTooltip?: (d: T, i: number) => TooltipContent;
 }) {
@@ -101,6 +103,7 @@ export function ComboChart<T extends Datum>({
 
   return (
     <Chart width={width} height={height} margin={chartMargin}>
+      {defs}
       <Grid xTicks={xTicks} yTicks={yTicks} />
       <AxisLeft ticks={leftTicks} />
       <AxisBottom ticks={bottomTicks} />

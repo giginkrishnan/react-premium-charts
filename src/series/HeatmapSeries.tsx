@@ -7,11 +7,47 @@ export type HeatmapCell = {
   label?: string;
 };
 
+function interpolateColor(
+  t: number,
+  stops: Array<{ offset: number; color: string }>
+): string {
+  if (stops.length === 0) return "var(--msc-grid)";
+  const first = stops[0];
+  if (stops.length === 1 || !first) return first?.color ?? "var(--msc-grid)";
+  t = Math.max(0, Math.min(1, t));
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i];
+    const b = stops[i + 1];
+    if (a && b && t >= a.offset && t <= b.offset) {
+      const local = (t - a.offset) / (b.offset - a.offset || 1);
+      return lerpColor(a.color, b.color, local);
+    }
+  }
+  const last = stops[stops.length - 1];
+  return last?.color ?? "var(--msc-grid)";
+}
+
+function lerpColor(a: string, b: string, t: number): string {
+  const parse = (hex: string): [number, number, number] => {
+    const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+    return m ? [parseInt(m[1] ?? "0", 16), parseInt(m[2] ?? "0", 16), parseInt(m[3] ?? "0", 16)] : [0, 0, 0];
+  };
+  const [r1, g1, b1] = parse(a);
+  const [r2, g2, b2] = parse(b);
+  const r = Math.round(r1 + (r2 - r1) * t);
+  const g = Math.round(g1 + (g2 - g1) * t);
+  const bl = Math.round(b1 + (b2 - b1) * t);
+  return `rgb(${r},${g},${bl})`;
+}
+
+export type HeatmapGradientStop = { offset: number; color: string };
+
 export function HeatmapSeries({
   rows,
   columns,
   data,
-  colorScale = ["#dcfce7", "#86efac", "#22c55e", "#15803d"],
+  colorScale = ["#93c5fd", "#3b82f6", "#8b5cf6", "#7c3aed"],
+  gradientStops,
   animate = true,
   duration = 300,
   hoverDimOpacity = 0.7,
@@ -21,6 +57,7 @@ export function HeatmapSeries({
   columns: string[];
   data: HeatmapCell[][];
   colorScale?: string[];
+  gradientStops?: HeatmapGradientStop[];
   animate?: boolean;
   duration?: number;
   hoverDimOpacity?: number;
@@ -70,8 +107,11 @@ export function HeatmapSeries({
   }, [innerWidth, innerHeight, columns.length, rows.length, data]);
 
   const getColor = (value: number) => {
-    if (colorScale.length === 0) return "var(--msc-grid)";
     const t = maxVal === minVal ? 0 : (value - minVal) / (maxVal - minVal);
+    if (gradientStops && gradientStops.length > 0) {
+      return interpolateColor(t, gradientStops);
+    }
+    if (colorScale.length === 0) return "var(--msc-grid)";
     const idx = Math.min(
       Math.floor(t * (colorScale.length - 1)),
       colorScale.length - 1

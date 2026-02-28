@@ -1,6 +1,6 @@
 import React from "react";
 import { Chart } from "../primitives/Chart";
-import { PieSeries } from "../series/PieSeries";
+import { PolarAreaSeries } from "../series/PolarAreaSeries";
 import { Legend } from "../primitives/Legend";
 import type { Datum, Accessor } from "../types";
 import type { TooltipContent } from "../series/BarSeries";
@@ -13,7 +13,7 @@ const DEFAULT_COLORS = [
   "var(--msc-s5)"
 ];
 
-export function PieChart<T extends Datum>({
+export function PolarAreaChart<T extends Datum>({
   data,
   value,
   label,
@@ -24,9 +24,6 @@ export function PieChart<T extends Datum>({
   showLegend = true,
   showValues = true,
   valueFormat = (v) => String(v),
-  innerRadius = 0,
-  padAngle = 0.02,
-  cornerRadius = 4,
   animate = true,
   defs,
   tooltip
@@ -41,9 +38,6 @@ export function PieChart<T extends Datum>({
   showLegend?: boolean;
   showValues?: boolean;
   valueFormat?: (value: number) => string;
-  innerRadius?: number;
-  padAngle?: number;
-  cornerRadius?: number;
   animate?: boolean;
   defs?: React.ReactNode;
   tooltip?: (d: T, i: number) => TooltipContent;
@@ -57,13 +51,6 @@ export function PieChart<T extends Datum>({
     color: getColor(i)
   }));
 
-  const defaultTooltip: (d: T, i: number) => TooltipContent =
-    tooltip ??
-    ((d, i) => ({
-      title: label ? label(d, i) : `Item ${i + 1}`,
-      rows: [{ label: "Value", value: valueFormat(value(d, i)), color: getColor(i) }]
-    }));
-
   const chartMargin = {
     top: margin.top ?? 16,
     right: margin.right ?? 16,
@@ -75,15 +62,12 @@ export function PieChart<T extends Datum>({
     <div>
       <Chart width={width} height={height} margin={chartMargin}>
         {defs}
-        <PieSeries
+        <PolarAreaSeries
           data={data}
           value={value}
           colors={colors}
-          innerRadius={innerRadius}
-          padAngle={padAngle}
-          cornerRadius={cornerRadius}
           animate={animate}
-          tooltip={defaultTooltip}
+          tooltip={tooltip}
         />
       </Chart>
       {showLegend && <Legend items={legendItems} />}
