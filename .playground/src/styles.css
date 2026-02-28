@@ -1,0 +1,30 @@
+@import "react-modern-charts/styles.css";
+
+body {
+  margin: 0;
+  background: var(--msc-bg);
+  color: var(--msc-text);
+  font-family: var(--msc-font);
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 40px auto;
+  padding: 0 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  padding: 14px 14px 10px 14px;
+  border: 1px solid var(--msc-border);
+  border-radius: var(--msc-radius);
+  background: var(--msc-panel);
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: var(--msc-muted);
+  font-weight: 650;
+}

@@ -1,0 +1,142 @@
+:root {
+  --msc-bg: #ffffff;
+  --msc-panel: #ffffff;
+  --msc-text: #0f172a;
+  --msc-muted: #475569;
+  --msc-grid: rgba(15, 23, 42, 0.08);
+  --msc-border: rgba(15, 23, 42, 0.12);
+
+  --msc-tooltip-bg: rgba(255, 255, 255, 0.92);
+  --msc-tooltip-border: rgba(15, 23, 42, 0.12);
+  --msc-tooltip-shadow: 0 12px 30px rgba(2, 6, 23, 0.12);
+
+  --msc-radius: 14px;
+  --msc-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+  --msc-s1: #2563eb;
+  --msc-s2: #10b981;
+  --msc-s3: #f59e0b;
+  --msc-s4: #ef4444;
+  --msc-s5: #8b5cf6;
+}
+
+[data-msc-theme="dark"] {
+  --msc-bg: #0b1220;
+  --msc-panel: #0f172a;
+  --msc-text: #e5e7eb;
+  --msc-muted: #a1a1aa;
+  --msc-grid: rgba(226, 232, 240, 0.08);
+  --msc-border: rgba(226, 232, 240, 0.12);
+
+  --msc-tooltip-bg: rgba(15, 23, 42, 0.92);
+  --msc-tooltip-border: rgba(226, 232, 240, 0.12);
+  --msc-tooltip-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.msc-root {
+  font-family: var(--msc-font);
+  color: var(--msc-text);
+}
+
+.msc-card {
+  background: var(--msc-panel);
+  border: 1px solid var(--msc-border);
+  border-radius: var(--msc-radius);
+}
+
+.msc-tooltip {
+  background: var(--msc-tooltip-bg);
+  border: 1px solid var(--msc-tooltip-border);
+  border-radius: 12px;
+  box-shadow: var(--msc-tooltip-shadow);
+  padding: 10px 12px;
+  min-width: 140px;
+  max-width: 200px;
+  backdrop-filter: blur(10px);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.msc-tooltip-title {
+  font-size: 12px;
+  color: var(--msc-muted);
+  margin-bottom: 8px;
+}
+
+.msc-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.msc-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-right: 8px;
+  transform: translateY(1px);
+}
+
+/* Chart animations */
+@keyframes msc-line-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes msc-area-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.msc-area-animate {
+  opacity: 0;
+}
+
+@keyframes msc-bar-grow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 0.92;
+  }
+}
+
+.msc-bar-animate {
+  transform-origin: bottom;
+}
+
+@keyframes msc-pie-draw {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0.92;
+    transform: scale(1);
+  }
+}
+
+.msc-pie-slice-animate {
+  opacity: 0;
+  transform-origin: center;
+}
+
+/* Hover effects */
+.msc-bar-hoverable:hover,
+.msc-pie-slice-hoverable:hover {
+  filter: brightness(1.05);
+}
